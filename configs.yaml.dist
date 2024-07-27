@@ -1,4 +1,4 @@
-data_file: 'path/to/data.json'
+data_file: 'profiles/<profile_name>/data.json'
 chrome_driver_path: 'path/to/chromedriver.exe'
 form_url: 'https://form-url.com'
-mapping: 'path/to/mapping/dummy.py'
+mapping: 'profiles/<profile_name>/map.py'
