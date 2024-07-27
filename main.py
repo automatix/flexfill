@@ -18,6 +18,12 @@ chrome_service = Service(config['chrome_driver_path'])
 driver = webdriver.Chrome(service=chrome_service)
 driver.get(config['form_url'])
 
+if 'pre_action' in config:
+    pre_action_spec = importlib.util.spec_from_file_location("pre_action", config['pre_action'])
+    pre_action = importlib.util.module_from_spec(pre_action_spec)
+    pre_action_spec.loader.exec_module(pre_action)
+    pre_action.execute_pre_action(driver)
+
 for map_item in mapping.mappings:
     fill_form(driver, data, *map_item)
 
