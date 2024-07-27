@@ -1,3 +1,4 @@
-data_file: 'path/to/your/data.json'
-chrome_driver_path: 'path/to/your/chromedriver.exe'
-form_url: 'https://your-form-url.com'
+data_file: 'path/to/data.json'
+chrome_driver_path: 'path/to/chromedriver.exe'
+form_url: 'https://form-url.com'
+mapping: 'path/to/mapping/dummy.py'
