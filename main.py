@@ -3,8 +3,7 @@ import yaml
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
-
-from mapping.dummy import fill_form
+from mapper import fill_form
 
 with open('configs.yaml', 'r') as f:
     config = yaml.safe_load(f)
