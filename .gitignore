@@ -1,2 +1,4 @@
 /.idea
 /configs.yaml
+/profiles
+!profiles/example
