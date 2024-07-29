@@ -1,43 +1,46 @@
 # FlexFill
 
 ## Description
-FlexFill is a Python script that uses Selenium to automate the process of filling out web forms. The script reads input data from a JSON file and fills specified form fields on a given web page. The browser window remains open indefinitely to allow for manual inspection and submission of the form.
+
+FlexFill is a flexible form-filling script that uses Selenium WebDriver to automate the process of filling out web forms. The script supports configurable mappings for form fields and allows for pre-actions, such as clicking buttons to open forms, before starting the form-filling process.
 
 ## Requirements
+
 - Python 3.x
 - Selenium
-- ChromeDriver
+- PyYAML
+- Chrome WebDriver
 
 ## Usage
-1. **Install Selenium**:
-    ```bash
-    pip install selenium
+
+1. **Install the required Python packages:**
+    ```sh
+    pip install selenium pyyaml
     ```
 
-2. **Download ChromeDriver**:
-    - Download the appropriate version of ChromeDriver for your operating system from [ChromeDriver - WebDriver for Chrome](https://sites.google.com/chromium.org/driver/downloads).
-    - Extract the downloaded file and place the ChromeDriver executable in a directory included in your system's PATH, or specify the path to the executable in the script.
+2. **Configure the `configs.yaml` file:**
+    - `data_file`: Path to the JSON file containing form data.
+    - `chrome_driver_path`: Path to the Chrome WebDriver executable.
+    - `form_url`: URL of the web page with the form.
+    - `mapping`: Path to the Python file containing field mappings.
+    - `pre_action`: (Optional) Path to the Python file containing pre-action logic.
 
-3. **Prepare JSON Input File**:
-    - Create a file named `dummy.json` in the `./data/` directory with the following content:
-        ```json
-        {
-          "name": "John Doe",
-          "email": "john.doe@example.com",
-          "message": "Hello, this is a test message."
-        }
-        ```
+3. **Run the script:**
+    ```sh
+    python main.py
+    ```
 
-4. **Modify and Run the Script**:
-    - Ensure the script `main.py` is correctly set up:
-        - path to the data file (e.g. `./data/dummy.json`)
-        - path to the ChromeDriver executable (e.g. `C:/Program Files/ChromeDriver/chromedriver.exe`)
-        - web page URL with the form to fill (e.g. `https://www.digitalunite.com/practice-webform-learners`)
-        - data fields mapping to the form fields (e.g. `name`, `email`, `message`)
+### Example `configs.yaml`
 
-    - Run the script using Python:
-        ```bash
-        py ./src/main.py
-        ```
+```yaml
+data_file: './data/dummy.json'
+chrome_driver_path: 'C:/Program Files/ChromeDriver/chromedriver.exe'
+form_url: 'https://www.digitalunite.com/practice-webform-learners'
+mapping: './mapping/dummy.py'
+pre_action: './pre_action.py'
+```
 
-    - The browser will open, fill in the `name` field, and remain open indefinitely. To stop the script and close the browser, press `Ctrl+C` in the terminal or command prompt.
+## Notes
+
+- Ensure that the paths in the configs.yaml file are correctly set according to your environment.
+- The pre-action script is optional. If no pre-action is needed, you can omit the pre_action key or provide an empty script.
